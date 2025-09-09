@@ -2,7 +2,7 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 local lazyLocallyAvailable = vim.uv.fs_stat(lazypath) ~= nil
 if not lazyLocallyAvailable then
-	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+	local lazyrepo = "https://github.com/robmurrer/lazy.nvim.git"
 	local out = vim.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath }):wait()
 	if out.code ~= 0 then
 		vim.api.nvim_echo({
@@ -29,10 +29,10 @@ local plugins = {
 	-- * Manager for external tools (LSPs, linters, debuggers, formatters)
 	-- * auto-install those external tools
 	{
-		"WhoIsSethDaniel/mason-tool-installer.nvim",
+		"robmurrer/mason-tool-installer.nvim",
 		dependencies = {
-			{ "williamboman/mason.nvim", opts = true },
-			{ "williamboman/mason-lspconfig.nvim", opts = true },
+			{ "robmurrer/mason.nvim", opts = true },
+			{ "robmurrer/mason-lspconfig.nvim", opts = true },
 		},
 		opts = {
 			ensure_installed = {
@@ -83,7 +83,7 @@ local plugins = {
 
 	-- COMPLETION
 	{
-		"saghen/blink.cmp",
+		"robmurrer/blink.cmp",
 		version = "v0.*", -- blink.cmp requires a release tag for its rust binary
 
 		opts = {
@@ -112,7 +112,7 @@ local plugins = {
 	-- to send the current line to the REPL, and `+j` to send the current and the
 	-- following line to the REPL, like we would do with other vim operators.
 	{
-		"Vigemus/iron.nvim",
+		"robmurrer/iron.nvim",
 		keys = {
 			{ "<leader>i", vim.cmd.IronRepl, desc = "󱠤 Toggle REPL" },
 			{ "<leader>I", vim.cmd.IronRestart, desc = "󱠤 Restart REPL" },
@@ -163,7 +163,7 @@ local plugins = {
 	-- treesitter for syntax highlighting
 	-- * auto-installs the parser for python
 	{
-		"nvim-treesitter/nvim-treesitter",
+		"robmurrer/nvim-treesitter",
 		-- automatically update the parsers with every new release of treesitter
 		build = ":TSUpdate",
 
@@ -195,7 +195,7 @@ local plugins = {
 	-- the best syntax highlighting experience:
 	-- https://dotfyle.com/neovim/colorscheme/top
 	{
-		"folke/tokyonight.nvim",
+		"robmurrer/tokyonight.nvim",
 		-- ensure that the color scheme is loaded at the very beginning
 		priority = 1000,
 		-- enable the colorscheme
@@ -210,7 +210,7 @@ local plugins = {
 	-- * add breakpoints with `<leader>db`
 	-- * terminate the debugger `<leader>dt`
 	{
-		"mfussenegger/nvim-dap",
+		"robmurrer/nvim-dap",
 		keys = {
 			{
 				"<leader>dc",
@@ -234,8 +234,8 @@ local plugins = {
 	-- * the debugger UI is also automatically opened when starting/stopping the debugger
 	-- * toggle debugger UI manually with `<leader>du`
 	{
-		"rcarriga/nvim-dap-ui",
-		dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
+		"robmurrer/nvim-dap-ui",
+		dependencies = { "robmurrer/nvim-dap", "robmurrer/nvim-nio" },
 		keys = {
 			{
 				"<leader>du",
@@ -256,8 +256,8 @@ local plugins = {
 	-- * configures debugpy for us
 	-- * uses the debugpy installation from mason
 	{
-		"mfussenegger/nvim-dap-python",
-		dependencies = "mfussenegger/nvim-dap",
+		"robmurrer/nvim-dap-python",
+		dependencies = "robmurrer/nvim-dap",
 		config = function()
 			-- fix: E5108: Error executing lua .../Local/nvim-data/lazy/nvim-dap-ui/lua/dapui/controls.lua:14: attempt to index local 'element' (a nil value)
 			-- see: https://github.com/rcarriga/nvim-dap-ui/issues/279#issuecomment-1596258077
@@ -276,7 +276,7 @@ local plugins = {
 	-- Docstring creation
 	-- * quickly create docstrings via `<leader>a`
 	{
-		"danymat/neogen",
+		"robmurrer/neogen",
 		opts = true,
 		keys = {
 			{
@@ -291,8 +291,8 @@ local plugins = {
 	-- * auto-convert strings to f-strings when typing `{}` in a string
 	-- * also auto-converts f-strings back to regular strings when removing `{}`
 	{
-		"chrisgrieser/nvim-puppeteer",
-		dependencies = "nvim-treesitter/nvim-treesitter",
+		"robmurrer/nvim-puppeteer",
+		dependencies = "robmurrer/nvim-treesitter",
 	},
 }
 
